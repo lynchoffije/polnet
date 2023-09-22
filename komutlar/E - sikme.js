@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
+let prefix = ayarlar.prefix;
 
 exports.run = (client, message, args) => {
   let user = message.mentions.users.first() || message.author;
@@ -13,12 +14,15 @@ exports.run = (client, message, args) => {
       .addField("**Eğlence Komutları Özel Mesajlarda Kullanılamaz!**");
     return message.author.send(ozelmesajuyari);
   }
+  if (!message.mentions.users.first()) {
+    return message.reply(`Lütfen birini etiketleyin. Örnek: \`${prefix}ss @username\``);
+  }
   if (message.channel.type !== "dm") {
     const sunucubilgi = new Discord.MessageEmbed()
-      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author.user} tarafından sikildi 😱 ${user} kaç defa prezervatif kullan cedim sana dimi 😂`)
+      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author} tarafından ss 😱 ${user} kaç defa prezervatif kullan cedim sana çocuk 😂`)
       .setColor("BLACK")
       .setFooter(
-        `${message.author.username} tarafından sikildi. 🔥`,
+        `${message.author.username} tarafından ss. 🔥😋`,
         userinfo.avatar
       )
       .setImage(
@@ -36,7 +40,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "sikme",
-  description: "Etiketlenen Kişiyi Siker (merak etmeyin hamile kalmaz 😀)",
-  usage: "sikme <@kullanıcı>"
+  name: "ss",
+  description: "Etiketlenen ss Siker (merak etmeyin hamile kalmaz 😀)",
+  usage: "ss <@kullanıcı>"
 };
