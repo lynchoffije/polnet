@@ -15,14 +15,17 @@ exports.run = (client, message, args) => {
     return message.author.send(ozelmesajuyari);
   }
   if (!message.mentions.users.first()) {
-    return message.reply(`Lütfen birini etiketleyin. Örnek: \`${prefix}ss @username\``);
+    const uyarimesaji = new Discord.MessageEmbed()
+      .setColor("BLACK")
+      .setDescription(`<@${message.author.id}> | Lütfen Sikmek İstediğiniz Kullanıcıyı Etiketleyin. Örnek: \`${prefix}sikme [Username\``);
+    return message.channel.send(uyarimesaji);
   }
   if (message.channel.type !== "dm") {
     const sunucubilgi = new Discord.MessageEmbed()
-      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author} tarafından ss 😱 ${user} kaç defa prezervatif kullan cedim sana çocuk 😂`)
+      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author.id} tarafından sikildi 😱 ${user} kaç defa prezervatif kullan cedim sana dimi 😂`)
       .setColor("BLACK")
       .setFooter(
-        `${message.author.username} tarafından ss. 🔥😋`,
+        `${message.author.username} tarafından sikildi. 🔥😋`,
         userinfo.avatar
       )
       .setImage(
@@ -40,7 +43,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "ss",
-  description: "Etiketlenen ss Siker (merak etmeyin hamile kalmaz 😀)",
-  usage: "ss <@kullanıcı>"
+  name: "sikme",
+  description: "Etiketlenen Kişiyi Siker (merak etmeyin hamile kalmaz 😀)",
+  usage: "sikme <@kullanıcı>"
 };
