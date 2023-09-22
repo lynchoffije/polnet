@@ -65,8 +65,8 @@ exports.run = async (client, message) => {
       true
     )
   .addField(
-      `__Becer__`,
-      `📯 \`${prefix}becer \` Birini Becerirsiniz.`,
+      `__Sikme__`,
+      `📯 \`${prefix}sikme \` Birini Sikersiniz.`,
       true
     )
     .addField(

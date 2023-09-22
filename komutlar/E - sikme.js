@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 
 exports.run = (client, message, args) => {
-  // Etiketlenmiş kullanıcıyı al
   let user = message.mentions.users.first() || message.author;
 
   let userinfo = {};
@@ -16,14 +15,14 @@ exports.run = (client, message, args) => {
   }
   if (message.channel.type !== "dm") {
     const sunucubilgi = new Discord.MessageEmbed()
-      .setDescription(`**Eyvahh Eyvahh** ${user} Siktin 😱`) // Kullanıcının adını burada etiketledik.
+      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author.user} tarafından sikildi 😱 ${user} kaç defa prezervatif kullan cedim sana dimi 😂`)
       .setColor("BLACK")
       .setFooter(
-        `${message.author.username} tarafından istendi.`,
+        `${message.author.username} tarafından sikildi. 🔥`,
         userinfo.avatar
       )
       .setImage(
-        `https://i.pinimg.com/originals/5a/28/de/5a28def9428afff43e86e21ffe382dc9.jpg`
+        `https://www.bobbiporno.com/wp-content/uploads/Ayni-anda-sikisen-uc-ciftin-sex-gifleri_0.gif`
       );
     return message.channel.send(sunucubilgi);
   }
@@ -38,6 +37,6 @@ exports.conf = {
 
 exports.help = {
   name: "sikme",
-  description: "Etiketlenen Kişiyi Siker (hamile kalmaz merak etmeyin 😀)",
+  description: "Etiketlenen Kişiyi Siker (merak etmeyin hamile kalmaz 😀)",
   usage: "sikme <@kullanıcı>"
 };
