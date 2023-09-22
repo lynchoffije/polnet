@@ -64,6 +64,11 @@ exports.run = async (client, message) => {
       `📯 \`${prefix}ara155 \` Polisi Ararsınız.`,
       true
     )
+  .addField(
+      `__Becer__`,
+      `📯 \`${prefix}becer \` Birini Becerirsiniz.`,
+      true
+    )
     .addField(
       `__Bilgilendirme__`,
       `📙 \`${prefix}davet\` | Botu Sununuya Davet Edersiniz\n 📙 \`${prefix}botbilgi\` | Botun İstatistiklerini Görürsünüz \n 📙 \`${prefix}siteler\` | Craveo  Sitelerini Görürsün`

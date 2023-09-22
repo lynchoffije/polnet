@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 
 exports.run = (client, message) => {
-    let csgopng = "https://cdn.discordapp.com/attachments/814946376894513163/816359385198362696/csgo.png"
+    let csgopng = "https://www.armateam.org/wp-content/uploads/2019/10/counter-strike-global-offensive-cs-go-logo.png"
     var kasadancikanlar = [
         "Glock-18 'Fade' (**Factory New**) \nPrice:**298.88$**",
         "M4A4 Poseidon (**Factory New**) \nPrice:**216.11$**",
