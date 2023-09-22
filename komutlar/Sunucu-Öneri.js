@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
       .setAuthor(
         "Bir Öneri Belirdi",
         message.author.displayAvatarURL({ dynamic: true }),
-        "https://discord.gg/jspCbGZMCs"
+        "https://discord.gg/CMH8HKpC9t"
       ).setDescription(`
 Konu baslığı
 \`\`\`cs

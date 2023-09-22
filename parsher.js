@@ -935,6 +935,7 @@ function extension(attachment) {
   let image = /(jpg|jpeg|png|gif)/gi.test(typeOfImage);
   if (!image) return "";
   return attachment;
+}   
 
 client.on("messageReactionAdd", async (messageReaction, user) => {
   if (user.bot) return;
@@ -1011,7 +1012,7 @@ client.on("messageReactionAdd", async (messageReaction, user) => {
         });
     }
   }
-});
+});   
 
 client.on("messageReactionRemove", async (messageReaction, user) => {
   if (user.bot) return;
@@ -1262,7 +1263,7 @@ client.on("guildMemberAdd", member => {
      .setAuthor(`Merhaba Sende Aramıza Hoşgeldin`)
     .setDescription("Seni aramız da görmekten onur ve şeref duyuyoruz.")
    .setColor("#00ff00")
-    .addField("**Sunucu Adresimiz**", "[Tıkla ](https://discord.gg/FejDjV9nSD)")
+    .addField("**Sunucu Adresimiz**", "[Tıkla ](https://discord.gg/CMH8HKpC9t)")
     .addField(
       "**YouTube kanalımız**",
       "[Tıkla ](https://www.youtube.com/@emreqxyy)"
@@ -1353,8 +1354,8 @@ client.on('ready', () => {
   // Oynuyor Kısmı
   
       var actvs = [
-        `${prefix}yardım | ${client.guilds.cache.size} sunucuyu`,
-        `${prefix}yardım | ${client.users.cache.size} kullanıcıyı`, 
+        `${prefix}yardım ${client.guilds.cache.size} sunucuyu`,
+        `${prefix}yardım ${client.users.cache.size} kullanıcıyı`, 
         `${prefix}yardım`
     ];
     
