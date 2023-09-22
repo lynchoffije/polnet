@@ -10,6 +10,7 @@ exports.run = (client, message, params) => {
     "Mercedes Maybach S680": "https://cdn.motor1.com/images/mgl/v9bvY/s1/2022-mercedes-maybach-s680.webp",
     "BMW i7": "https://ares.shiftdelete.net/2022/04/bmw-i7-xdrive60-tanitildi.jpg",
     "Audi S8": "https://cdn.motor1.com/images/mgl/28MWB/s1/2022-audi-s8.webp",
+    "Bugatti Mistral": "https://cdn.motor1.com/images/mgl/BXXw8A/s1/2024-bugatti-mistral.jpg",
   };
 
   let randomMarka = Object.keys(arabalar)[Math.floor(Math.random() * Object.keys(arabalar).length)];
