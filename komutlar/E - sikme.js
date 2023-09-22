@@ -17,12 +17,12 @@ exports.run = (client, message, args) => {
   if (!message.mentions.users.first()) {
     const uyarimesaji = new Discord.MessageEmbed()
       .setColor("BLACK")
-      .setDescription(`<@${message.author.id}> | Lütfen Sikmek İstediğiniz Kullanıcıyı Etiketleyin. Örnek: \`${prefix}sikme [Username\``);
+      .setDescription(`<@${message.author.id}> | Lütfen Sikmek İstediğiniz Kullanıcıyı Etiketleyin. Örnek: \`${prefix}sikme [Username]\``);
     return message.channel.send(uyarimesaji);
   }
   if (message.channel.type !== "dm") {
     const sunucubilgi = new Discord.MessageEmbed()
-      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author.id} tarafından sikildi 😱 ${user} kaç defa prezervatif kullan cedim sana dimi 😂`)
+      .setDescription(`**Eyvahh Eyvahh** ${user} ${message.author} tarafından sikildi. 😱 ${user} kaç defa prezervatif kullan dedim sana çocuk 😂`)
       .setColor("BLACK")
       .setFooter(
         `${message.author.username} tarafından sikildi. 🔥😋`,
