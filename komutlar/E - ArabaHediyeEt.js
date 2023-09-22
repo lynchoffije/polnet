@@ -24,7 +24,7 @@ exports.run = (client, message, params) => {
   }
 
   const arabaver = new Discord.MessageEmbed()
-    .setDescription(`${message.author} ${user} Kişisine **${randomMarka}** Hediye Etti. 😱`)
+    .setDescription(`${message.author} ${user} Kişisine **Vegga** Galeriden **${randomMarka}** Hediye Etti. 😱`)
     .setImage(arabagorsel)
     .setColor("BLACK")
     .setFooter(
