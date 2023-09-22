@@ -45,5 +45,5 @@ exports.conf = {
 exports.help = {
   name: "sikme",
   description: "Etiketlenen Kişiyi Siker (merak etmeyin hamile kalmaz 😀)",
-  usage: "sikme <@kullanıcı>"
+  usage: "sikme"
 };

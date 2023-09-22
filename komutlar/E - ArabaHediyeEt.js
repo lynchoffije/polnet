@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 const fs = require("fs");
+let prefix = ayarlar.prefix;
 
 exports.run = (client, message, params) => {
   let user = message.mentions.users.first() || message.author;
@@ -13,10 +14,16 @@ exports.run = (client, message, params) => {
 
   let randomMarka = Object.keys(arabalar)[Math.floor(Math.random() * Object.keys(arabalar).length)];
   let arabagorsel = arabalar[randomMarka];
+  
+  if (!message.mentions.users.first()) {
+    const uyarimesaji = new Discord.MessageEmbed()
+      .setColor("BLACK")
+      .setDescription(`<@${message.author.id}> | Lütfen Araba Hediye Etmek İstediğiniz Kullanıcıyı Etiketleyin. Örnek: \`${prefix}arabahediyeet [Username]\``);
+    return message.channel.send(uyarimesaji);
+  }
 
   const arabaver = new Discord.MessageEmbed()
-    .setTitle(`${user.username}'ın Arabası:`)
-    .setDescription(`Marka: ${randomMarka}`)
+    .setDescription(`${message.author} ${user} Kişisine **${randomMarka}** Hediye Etti. 😱`)
     .setImage(arabagorsel)
     .setColor("BLACK")
     .setFooter(
@@ -34,7 +41,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "araba",
-  description: "Etiketlenen kişiye rastgele bir araba markası ve görseli gönderir.",
-  usage: "araba"
+  name: "arabahediyeet",
+  description: "Etiketlenen Kişiye Araba Hediye Edersiniz",
+  usage: "arabahediyeet"
 };

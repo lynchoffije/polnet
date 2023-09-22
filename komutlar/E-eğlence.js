@@ -70,8 +70,8 @@ exports.run = async (client, message) => {
       true
     )
   .addField(
-      `__Araba__`,
-      `📯 \`${prefix}araba \` Birine Araba Verirsiniz.`,
+      `__Araba Hediye Et__`,
+      `📯 \`${prefix}arabahediyeet \` Birine Araba Hediye Edersiniz.`,
       true
     )
     .addField(
