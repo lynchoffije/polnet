@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
       .setDescription(`**Eyvahh Eyvahh** ${message.author} ${user} Kişisini Hamckledi. 😱 ${user} Kaç Defa Sana Hamcklenme Dedim Çocuk 😂`)
       .setColor("BLACK")
       .setFooter(
-        `${message.author.username} tarafından hamcklendi. 🔥😋`,
+        `${message.author.username} tarafından hamcklendi. 😱`,
         userinfo.avatar
       )
       .setImage(
