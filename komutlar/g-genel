@@ -25,7 +25,7 @@ exports.run = async (client, message) => {
     )
     .addField(
       `__Toplam Komut__`,
-      ` 🚩  \`${prefix}komutlar\` Discord Botta Toplam Kaç Komut Var Ona Bakarsın.`,
+      ` 🚩  \`${prefix}komut\` Discord Botta Toplam Kaç Komut Var Ona Bakarsın.`,
       true
     )
     .addField(

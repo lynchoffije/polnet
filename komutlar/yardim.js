@@ -25,7 +25,7 @@ exports.run = async (client, message) => {
     )
     .addField(
       `__Sorgu Çözümleri__`,
-      `👥 \`${prefix}sorgucozumleri\``,
+      `👥 \`${prefix}sorguçözümleri\``,
       true
     )
     .addField(
@@ -35,27 +35,27 @@ exports.run = async (client, message) => {
     )
     .addField(
       `__Numara Çözümleri__`,
-      `👥 \`${prefix}numaracozumleri\``,
+      `👥 \`${prefix}numaraçözümleri\``,
       true
     )
     .addField(
       `__Sağlık Çözümleri__`,
-      `👥 \`${prefix}saglikcozumleri\``,
+      `👥 \`${prefix}sağlıkçözümleri\``,
       true
     )
     .addField(
       `__Araç ve Şahıs Çözümleri__`,
-      `👥 \`${prefix}aracvesahiscozumleri\``,
+      `👥 \`${prefix}araçveşahısçözümleri\``,
       true
     )
     .addField(
       `__İnternet Çözümleri__`,
-      `👥 \`${prefix}internetcozumleri\``,
+      `👥 \`${prefix}internetçözümleri\``,
       true
     )
     .addField(
       `__Eğitim Çözümleri__`,
-      `👥 \`${prefix}egitimcozumleri\``,
+      `👥 \`${prefix}eğitimçözümleri\``,
       true
     )
     .addField(
