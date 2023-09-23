@@ -79,6 +79,11 @@ exports.run = async (client, message) => {
       `📯 \`${prefix}hacked \` Birine Hamcklersiniz.`,
       true
     )
+  .addField(
+      `__SoruSor__`,
+      `📯 \`${prefix}sorusor \` Bota Soru Sorarsınız.`,
+      true
+    )
     .addField(
       `__Bilgilendirme__`,
       `📙 \`${prefix}davet\` | Botu Sununuya Davet Edersiniz\n 📙 \`${prefix}botbilgi\` | Botun İstatistiklerini Görürsünüz \n 📙 \`${prefix}siteler\` | Craveo  Sitelerini Görürsün`

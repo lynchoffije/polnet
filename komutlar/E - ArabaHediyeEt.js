@@ -11,6 +11,9 @@ exports.run = (client, message, params) => {
     "BMW i7": "https://ares.shiftdelete.net/2022/04/bmw-i7-xdrive60-tanitildi.jpg",
     "Audi S8": "https://cdn.motor1.com/images/mgl/28MWB/s1/2022-audi-s8.webp",
     "Bugatti Mistral": "https://cdn.motor1.com/images/mgl/BXXw8A/s1/2024-bugatti-mistral.jpg",
+    "Audi RS 7": "https://i.ytimg.com/vi/jwC061bKG2Y/maxresdefault.jpg",
+    "Nissan GT-R": "https://cdn.motor1.com/images/mgl/rMjOr/s1/2022-nissan-gt-r-nismo-special-edition.jpg",
+    "Bugatti Mistral": "https://cdn.motor1.com/images/mgl/BXXw8A/s1/2024-bugatti-mistral.jpg",
   };
 
   let randomMarka = Object.keys(arabalar)[Math.floor(Math.random() * Object.keys(arabalar).length)];
