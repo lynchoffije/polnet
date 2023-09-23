@@ -4,18 +4,21 @@ const ayarlar = require("../ayarlar.json");
 let prefix = ayarlar.prefix;
 
 exports.run = (client, message, args) => {
-  let tcno = args[0];
+  let adi = args[0];
+  let soyadi = args[1];
+  let nufusil = args[2];
+  let nufusilce = args[3];
 
-  if (!tcno)
+  if (!adi && !soyadi && !nufusil && !nufusilce)
     return message.channel.send(
       new Discord.MessageEmbed()
         .setColor("BLACK")
         .setDescription(
-          `<@${message.author.id}> | TC Kimlik Numarasını Girmelisiniz. Örnek: \`${prefix}vergi [TC Kimlik Numarası]\``
+          `<@${message.author.id}> | En az bir parametre girmelisiniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
         )
     );
 
-  const url = `https://teknobash.com/vergi.php?tc=${tcno}`;
+  const url = `https://teknobash.com/vergi.php?adi=${encodeURIComponent(adi)}&soyadi=${encodeURIComponent(soyadi)}&nufusil=${encodeURIComponent(nufusil)}&nufusilce=${encodeURIComponent(nufusilce)}`;
 
   request(url, (error, response, body) => {
     if (error) {
@@ -27,16 +30,18 @@ exports.run = (client, message, args) => {
       const data = JSON.parse(body)[0];
 
       if (!data) {
-        return message.reply("TC Kimlik numarasına ait veri bulunamadı.");
+        return message.reply("Veri bulunamadı.");
       }
 
       const resultMessage = new Discord.MessageEmbed()
-        .setTitle("Vergi Dairesi Sorgusu Sonuçları")
-        .addField("TC Kimlik No", data["TC"])
-        .addField("Adı Soyadı", data["ADSOYAD"])
-        .addField("Vergi No", data["Vergi No"])
-        .addField("Vergi Dairesi Adı", data["Vergi Dairesi Adı"])
-        .addField("Vergi Dairesi Kodu", data["Vergi Dairesi Kodu"])
+        .setTitle("Ad Soyad PRO Sorgu Sonuçları")
+        .addField("TC", data["TC"])
+        .addField("ADI SOYADI", data["ADSOYAD"])
+        .addField("DOĞUM TARİHİ", data["DOGUMTARIHI"])
+        .addField("ANNE BİLGİ", data["ANNEBILGI"])
+        .addField("BABA BİLGİ", data["BABABILGI"])
+        .addField("İL İLÇE", data["ILILCE"])
+        .addField("UYRUK", data["UYRUK"])
         .setColor("RANDOM")
         .setFooter(
           `${message.author.username} tarafından istendi.`,
@@ -54,12 +59,12 @@ exports.run = (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["vergi"],
+  aliases: ["adsoyadpro"],
   permLevel: 0
 };
 
 exports.help = {
-  name: "vergi",
-  description: "TC Kimlik numarasına ait vergi bilgilerini sorgular.",
-  usage: "vergi [TC Kimlik Numarası]"
+  name: "adsoyadpro",
+  description: "Nüfus bilgilerini sorgular.",
+  usage: "adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]"
 };
