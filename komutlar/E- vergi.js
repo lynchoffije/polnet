@@ -4,7 +4,8 @@ const request = require("request");
 exports.run = async (client, message, args) => {
   let tcNo = args.join("");
   if (!tcNo) {
-    return message.reply("TC Kimlik Numarasını girmelisiniz. Örnek: `!vergi 10588936370`");
+    const errorMessage = "TC Kimlik Numarasını girmelisiniz. Örnek: `!vergi 10588936370`";
+    return message.reply(errorMessage).setDescription(errorMessage);
   }
   
   let userinfo = {};
