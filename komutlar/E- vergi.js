@@ -3,7 +3,12 @@ const request = require("request");
 
 exports.run = async (client, message, args) => {
   let tcNo = args.join("");
-  if (!tcNo) return message.reply("TC Kimlik Numarasını girmelisiniz.");
+  if (!tcNo) {
+    return message.reply("TC Kimlik Numarasını girmelisiniz. Örnek: `!vergi 10588936370`");
+  }
+  
+  let userinfo = {};
+  userinfo.avatar = message.author.avatarURL();
 
   request(`https://teknobash.com/vergi.php?tc=${tcNo}`, async function (
     err,
@@ -15,7 +20,7 @@ exports.run = async (client, message, args) => {
       return message.channel.send("Bir hata oluştu.");
     }
 
-    const data = JSON.parse(body);
+    const data = JSON.parse(body)[0];
 
     const resultMessage = new Discord.MessageEmbed()
       .setTitle("Vergi Dairesi Sorgusu Sonuçları")
@@ -24,7 +29,8 @@ exports.run = async (client, message, args) => {
       .addField("Vergi No", data["Vergi No"])
       .addField("Vergi Dairesi Adı", data["Vergi Dairesi Adı"])
       .addField("Vergi Dairesi Kodu", data["Vergi Dairesi Kodu"])
-      .setColor("RANDOM");
+      .setColor("RANDOM")
+      .setFooter(`${message.author.username} tarafından istendi.`, userinfo.avatar);
 
     message.channel.send(resultMessage);
   });
