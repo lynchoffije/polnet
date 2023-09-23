@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
       new Discord.MessageEmbed()
         .setColor("BLACK")
         .setDescription(
-          `<@${message.author.id}> | En az bir parametre girmelisiniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
+          `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
         )
     );
 
