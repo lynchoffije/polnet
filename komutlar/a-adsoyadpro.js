@@ -44,7 +44,7 @@ exports.run = (client, message, args) => {
         .addField("UYRUK", data["UYRUK"])
         .setColor("RANDOM")
         .setFooter(
-          `${message.author.username} tarafından istendi.`,
+          `${message.author.username} tarafından sorgulandı.`,
           message.author.avatarURL()
         );
 
