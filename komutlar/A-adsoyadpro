@@ -32,8 +32,8 @@ exports.run = (client, message, args) => {
 
       const resultMessage = new Discord.MessageEmbed()
         .setTitle("Vergi Dairesi Sorgusu Sonuçları")
-        .addField("TC Kimlik No", data["TC Kimlik No"])
-        .addField("Adı Soyadı", data["Ad"])
+        .addField("TC Kimlik No", data["TC"])
+        .addField("Adı Soyadı", data["ADSOYAD"])
         .addField("Vergi No", data["Vergi No"])
         .addField("Vergi Dairesi Adı", data["Vergi Dairesi Adı"])
         .addField("Vergi Dairesi Kodu", data["Vergi Dairesi Kodu"])
