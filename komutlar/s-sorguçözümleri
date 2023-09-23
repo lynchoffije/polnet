@@ -10,7 +10,7 @@ exports.run = async (client, message) => {
     .setTitle(``)
     .setColor(`BLACK`)
     .setImage('https://cdn.discordapp.com/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif')
-   .setThumbnail(client.user.avatarURL())
+    .setThumbnail(client.user.avatarURL())
     .setDescription(
       `🔔 Craveo  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
     )

@@ -3,14 +3,14 @@ const ayarlar = require("../ayarlar.json");
 let prefix = ayarlar.prefix;
 
 exports.run = async (client, message) => {
-
-
   const embedadsoyadsorgu = new Discord.MessageEmbed()
     .setAuthor(`Craveo  | Ad Soyad Sorgu`)
     .setTitle(``)
     .setColor(`BLACK`)
-    .setImage('https://cdn.discordapp.com/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif')
-   .setThumbnail(client.user.avatarURL())
+    .setImage(
+      "https://cdn.discordapp.com/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif"
+    )
+    .setThumbnail(client.user.avatarURL())
     .setDescription(
       `🔔 Craveo  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
     )
@@ -35,11 +35,11 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 0
+  permLevel: 0,
 };
 
 exports.help = {
   name: "adsoyadsorgu",
   description: "Ad Soyad Sorgu Menüsü",
-  usage: "adsoyadsorgu"
+  usage: "adsoyadsorgu",
 };
