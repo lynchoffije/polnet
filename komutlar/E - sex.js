@@ -43,7 +43,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "sikme",
+  name: "sex",
   description: "Etiketlenen Kişiyi Siker (merak etmeyin hamile kalmaz 😀)",
-  usage: "sikme"
+  usage: "sex"
 };
