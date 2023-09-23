@@ -19,6 +19,6 @@ exports.conf = {
 
 exports.help = {
   name: "sor",
-  description: "bota soru sorarsınız",
+  description: "Bota Soru Sorarsınız",
   usage: "sor"
 };

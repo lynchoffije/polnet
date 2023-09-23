@@ -75,11 +75,6 @@ exports.run = async (client, message) => {
       true
     )
   .addField(
-      `__Hacked__`,
-      `📯 \`${prefix}hacked \` Birine Hamcklersiniz.`,
-      true
-    )
-  .addField(
       `__SoruSor__`,
       `📯 \`${prefix}sorusor \` Bota Soru Sorarsınız.`,
       true
