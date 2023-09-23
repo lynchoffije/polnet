@@ -19,43 +19,43 @@ exports.run = async (client, message) => {
       true
     )
     .addField(
-      `__Ayarlar Komutlar__`,
-      `⚙️  \`${prefix}ayarlar\` `,
+      `__Ad Soyad Sorgu__`,
+      `👥 \`${prefix}adsoyasorgu\``,
       true
     )
     .addField(
-      `__Öneri__`,
-      `🔰 \`${prefix}öneri-sistem\`  `,
+      `__Sorgu Çözümleri__`,
+      `👥 \`${prefix}sorgucozumleri\``,
       true
     )
     .addField(
-      `__seviye__`,
-      `⚙️ \`${prefix}seviye-sistem\` `,
+      `__Genel Sorgular__`,
+      `👥 \`${prefix}genelsorgular\``,
       true
     )
     .addField(
-      `__Kullanıcı Komutlar__`,
-      `🌀 \`${prefix}kullanıcı\` `,
+      `__Numara Çözümleri__`,
+      `👥 \`${prefix}numaracozumleri\``,
       true
     )
     .addField(
-      `__Oto rol__`,
-      ` 🎮 \`${prefix}otorol-sistem\` `,
+      `__Sağlık Çözümleri__`,
+      `👥 \`${prefix}saglikcozumleri\``,
       true
     )
     .addField(
-      `__Ticket__`,
-      `🎉 \`${prefix}ticket-sistem\` `,
+      `__Araç ve Şahıs Çözümleri__`,
+      `👥 \`${prefix}aracvesahiscozumleri\``,
       true
     )
     .addField(
-      `__Sistemler__`,
-      `🎏 \`${prefix}eklenti\``,
+      `__İnternet Çözümleri__`,
+      `👥 \`${prefix}internetcozumleri\``,
       true
     )
     .addField(
-      `__Eğlence Komutlar__`,
-      `🎲 \`${prefix}eğlence\``,
+      `__Eğitim Çözümleri__`,
+      `👥 \`${prefix}egitimcozumleri\``,
       true
     )
     .addField(
