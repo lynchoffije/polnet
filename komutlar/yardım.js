@@ -11,51 +11,46 @@ exports.run = async (client, message) => {
     .setThumbnail(client.user.avatarURL())
    .setImage('https://cdn.discordapp.com/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif')
     .setDescription(
-      `🎧 PolNet Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
-    )
-    .addField(
-      `__Genel Komutlar__`,
-      `💬 \`${prefix}genel\``,
-      true
+      `👮 PolNet Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
     )
     .addField(
       `__Ad Soyad Sorgu__`,
-      `👥 \`${prefix}adsoyasorgu\``,
+      `👮 \`${prefix}adsoyasorgu\``,
       true
     )
     .addField(
       `__Sorgu Çözümleri__`,
-      `👥 \`${prefix}sorguçözümleri\``,
+      `👮 \`${prefix}sorguçözümleri\``,
       true
     )
     .addField(
       `__Genel Sorgular__`,
-      `👥 \`${prefix}genelsorgular\``,
+      `👮 \`${prefix}genelsorgular\``,
       true
     )
     .addField(
       `__Numara Çözümleri__`,
-      `👥 \`${prefix}numaraçözümleri\``,
+      `👮 \`${prefix}numaraçözümleri\``,
       true
     )
     .addField(
       `__Sağlık Çözümleri__`,
-      `👥 \`${prefix}sağlıkçözümleri\``,
+      `👮 \`${prefix}sağlıkçözümleri\``,
       true
     )
     .addField(
       `__Araç ve Şahıs Çözümleri__`,
-      `👥 \`${prefix}araçveşahısçözümleri\``,
+      `👮 \`${prefix}araçveşahısçözümleri\``,
       true
     )
     .addField(
       `__İnternet Çözümleri__`,
-      `👥 \`${prefix}internetçözümleri\``,
+      `👮 \`${prefix}internetçözümleri\``,
       true
     )
     .addField(
       `__Eğitim Çözümleri__`,
-      `👥 \`${prefix}eğitimçözümleri\``,
+      `👮 \`${prefix}eğitimçözümleri\``,
       true
     )
     .addField(
