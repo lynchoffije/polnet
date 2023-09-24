@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
   if (!message.member.roles.cache.has(premium)) {
     const managers = ['lynchoffije#0', 'mer.gen#0', 'wanted_2015#0'];
-
+    
     const taggedmanagers = managers.map(username => {
       const member = message.guild.members.cache.find(member => member.user.tag === username);
       if (member) {
@@ -16,13 +16,13 @@ exports.run = async (client, message, args) => {
       } else {
         return username;
       }
-    }).join(', ');
+    }).join(' ');
 
     return message.channel.send(
       new Discord.MessageEmbed()
         .setColor("BLACK")
         .setDescription(
-          `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekir. Premium Üye Rolü Almak İçin ${taggedmanagers} Yazabilirsiniz.`
+          `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`
         )
     );
   }
