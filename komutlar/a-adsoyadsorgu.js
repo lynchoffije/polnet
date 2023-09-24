@@ -12,21 +12,21 @@ exports.run = async (client, message) => {
     )
     .setThumbnail(client.user.avatarURL())
     .setDescription(
-      `🔔 PolNet  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
+      `👮 PolNet  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
     )
     .addField(
       `__Ad Soyad PRO__`,
-      `🚨 \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\` Sorguladığınız Kişinin Bilgilerini Verir.`,
+      `👤 \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\` Sorguladığınız Kişinin Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Göçmen Ad Soyad__`,
-      `🚨 \`${prefix}gocmenadsoyad [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\` Sorguladığınız Göçmenin Bilgilerini Verir.`,
+      `👤 \`${prefix}gocmenadsoyad [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\` Sorguladığınız Göçmenin Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Bilgilendirme__`,
-      `📙 \`${prefix}davet\` | Botu Sununuya Davet Edersiniz\n 📙 \`${prefix}botbilgi\` | Botun İstatistiklerini Görürsünüz`
+      `📣 \`${prefix}davet\` | Botu Sununuya Davet Edersiniz\n 🤖 \`${prefix}botbilgi\` | Botun İstatistiklerini Görürsünüz`
     );
   return message.channel.send(embedadsoyadsorgu);
 };
