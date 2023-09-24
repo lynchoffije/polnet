@@ -4,6 +4,18 @@ const ayarlar = require("../ayarlar.json");
 let prefix = ayarlar.prefix;
 
 exports.run = (client, message, args) => {
+  const premium = ayarlar.premium;
+
+  if (!message.member.roles.cache.has(premium)) {
+    return message.channel.send(
+      new Discord.MessageEmbed()
+        .setColor("BLACK")
+        .setDescription(
+          `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Olmanız Gerekiyor.`
+        )
+    );
+  }
+
   let adi = args[0];
   let soyadi = args[1];
   let nufusil = args[2];
@@ -65,6 +77,6 @@ exports.conf = {
 
 exports.help = {
   name: "adsoyadpro",
-  description: "Nüfus bilgilerini sorgular.",
+  description: "Sorgulanan Kişinini Bilgilerini Verir.",
   usage: "adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]"
 };
