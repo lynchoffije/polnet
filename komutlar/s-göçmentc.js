@@ -34,11 +34,11 @@ exports.run = async (client, message, args) => {
       new Discord.MessageEmbed()
         .setColor("BLACK")
         .setDescription(
-          `<@${message.author.id}> | Lütfen Sorgulama İçin T.C. Kimlik Numarasını Giriniz. Örnek: \`${prefix}tcpro [TC] \``
+          `<@${message.author.id}> | Lütfen Sorgulama İçin T.C. Kimlik Numarasını Giriniz. Örnek: \`${prefix}göçmentc [TC] \``
         )
     );
 
-  const url = `https://www.site.com/api/tcpro.php?tc=${encodeURIComponent(tc)}`;
+  const url = `https://www.site.com/api/göçmentc.php?tc=${encodeURIComponent(tc)}`;
 
   request(url, (error, response, body) => {
     if (error) {
@@ -54,17 +54,15 @@ exports.run = async (client, message, args) => {
       }
 
       const resultMessage = new Discord.MessageEmbed()
-        .setTitle("T.C. PRO Sorgu Sonuçları")
+        .setTitle("Göçmen T.C. Sorgu Sonuçları")
         .addField("TC", data["TC"])
         .addField("ADI SOYADI", data["ADSOYAD"])
         .addField("DOĞUM YERİ", data["DOGUMYERI"])
         .addField("DOĞUM TARİHİ", data["DOGUMTARIHI"])
-        .addField("ANNE BİLGİ", data["ANNEBILGI"])
-        .addField("BABA BİLGİ", data["BABABILGI"])
+        .addField("ANNE ADI", data["ANNEADI"])
+        .addField("BABA ADI", data["BABAADI"])
         .addField("İL / İLÇE", data["ILILCE"])
-        .addField("CİLT NO", data["CILTNO"])
-        .addField("SIRA NO", data["SIRANO"])
-        .addField("AİLE SIRA NO", data["AILESIRANO"])
+        .addField("UYRUK", data["UYRUK"])
         .setColor("RANDOM")
         .setFooter(
           `${message.author.username} tarafından sorgulandı.`,
@@ -82,12 +80,12 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["tcpro"],
+  aliases: ["göçmentc"],
   permLevel: 0
 };
 
 exports.help = {
-  name: "tcpro",
-  description: "Sorgulanan Kişinin T.C. Kimlik Bilgilerini Verir.",
-  usage: "tcpro [TC]"
+  name: "göçmentc",
+  description: "Sorgulanan Göçmenin T.C. Kimlik Bilgilerini Verir.",
+  usage: "göçmentc [TC]"
 };

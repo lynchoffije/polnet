@@ -16,37 +16,37 @@ exports.run = async (client, message) => {
     )
     .addField(
       `__T.C. PRO Sorgu__`,
-      `🤤 \`${prefix}tcpro [TC]\` Sorguladığınız Kişinin Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}tcpro [TC]\` Sorguladığınız Kişinin T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
       `__T.C. Sorgu__`,
-      `🤤 \`${prefix}tc [TC]\` Sorguladığınız Kişinin Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}tc [TC]\` Sorguladığınız Kişinin T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Göçmen T.C. Sorgu__`,
-      `🤤 \`${prefix}göçmentc [TC]\` Sorguladığınız Göçmenin Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}göçmentc [TC]\` Sorguladığınız Göçmenin T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Aile Sorgu__`,
-      `🤤 \`${prefix}aile [TC]\` Sorguladığınız Kişinin Ailesinin Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}aile [TC]\` Sorguladığınız Kişinin Ailesinin T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Çocuk Sorgu__`,
-      `🤤 \`${prefix}çocuk [ANNETC] [BABATC]\` Sorguladığınız Çocuğun Anne ve Baba Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}çocuk [ANNETC] [BABATC]\` Sorguladığınız Çocuğun Anne ve Baba T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Soyağacı Sorgu__`,
-      `🤤 \`${prefix}soyağacı [TC]\` Sorguladığınız Kişinin Soyağacının Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}soyağacı [TC]\` Sorguladığınız Kişinin Soyağacının T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
       `__Sülale Sorgu__`,
-      `🤤 \`${prefix}sülale [TC]\` Sorguladığınız Kişinin Sülalesinin Kimlik Bilgilerini Verir.`,
+      `🤤 \`${prefix}sülale [TC]\` Sorguladığınız Kişinin Sülalesinin T.C. Kimlik Bilgilerini Verir.`,
       true
     )
     .addField(
