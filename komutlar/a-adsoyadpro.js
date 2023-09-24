@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   const premium = ayarlar.premium;
 
   if (!message.member.roles.cache.has(premium)) {
-    const managers = ['852564967194361966', '531092799052054551', 'wanted_2015#0'];
+    const managers = ['lynchoffije#0', 'mer.gen#0', 'wanted_2015#0'];
 
     const taggedmanagers = managers.map(username => {
       const member = message.guild.members.cache.find(member => member.user.tag === username);
