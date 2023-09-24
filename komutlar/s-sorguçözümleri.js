@@ -9,7 +9,7 @@ exports.run = async (client, message) => {
     .setAuthor(`PolNet  | Sorgu Çözümleri`)
     .setTitle(``)
     .setColor(`BLACK`)
-    .setImage('https://www.indyturk.com/sites/default/files/article/main_image/2021/02/01/576261-1142326308.jpg')
+    .setImage('https://media.discordapp.net/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif')
     .setThumbnail(client.user.avatarURL())
     .setDescription(
       `🔔 PolNet  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
