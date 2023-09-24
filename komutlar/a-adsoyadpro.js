@@ -3,15 +3,26 @@ const request = require("request");
 const ayarlar = require("../ayarlar.json");
 let prefix = ayarlar.prefix;
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   const premium = ayarlar.premium;
 
   if (!message.member.roles.cache.has(premium)) {
+    const managers = ['852564967194361966', '531092799052054551', 'wanted_2015#0'];
+
+    const taggedmanagers = managers.map(username => {
+      const member = message.guild.members.cache.find(member => member.user.tag === username);
+      if (member) {
+        return member.toString();
+      } else {
+        return username;
+      }
+    }).join(', ');
+
     return message.channel.send(
       new Discord.MessageEmbed()
         .setColor("BLACK")
         .setDescription(
-          `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Olmanız Gerekiyor.`
+          `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekir. Premium Üye Rolü Almak İçin ${taggedmanagers} Yazabilirsiniz.`
         )
     );
   }
@@ -77,6 +88,6 @@ exports.conf = {
 
 exports.help = {
   name: "adsoyadpro",
-  description: "Sorgulanan Kişinini Bilgilerini Verir.",
+  description: "Sorgulanan Kişinin Bilgilerini Verir.",
   usage: "adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]"
 };
