@@ -5,7 +5,7 @@ const ayarlar = require("../ayarlar.json");
 let prefix = ayarlar.prefix;
 
   const botbilgi = new Discord.MessageEmbed()
-    .setAuthor(`Craveo | Discord Bot Bilgi Tablosu`)
+    .setAuthor(`PolNet | Discord Bot Bilgi Tablosu`)
     .setTitle(``)
     .setColor("#00ff00")
     .setImage('https://cdn.discordapp.com/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif')

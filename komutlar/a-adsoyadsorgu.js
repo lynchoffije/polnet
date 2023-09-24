@@ -12,7 +12,7 @@ exports.run = async (client, message) => {
     )
     .setThumbnail(client.user.avatarURL())
     .setDescription(
-      `🔔 Craveo  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
+      `🔔 PolNet  Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
     )
     .addField(
       `__Ad Soyad PRO__`,

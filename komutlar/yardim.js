@@ -5,13 +5,13 @@ exports.run = async (client, message) => {
   let prefix = ayarlar.prefix;
 
   const embed = new Discord.MessageEmbed()
-    .setAuthor(`Craveo`)
+    .setAuthor(`PolNet`)
     .setTitle(``)
     .setColor("#00ff00")
     .setThumbnail(client.user.avatarURL())
    .setImage('https://cdn.discordapp.com/attachments/1154394792139161600/1154799118200360980/craveo-banner.gif')
     .setDescription(
-      `🎧 Craveo Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
+      `🎧 PolNet Botumuzu Eklemek İçin \`${prefix}davet\` yazabilirsiniz.`
     )
     .addField(
       `__Genel Komutlar__`,
