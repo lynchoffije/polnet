@@ -116,9 +116,9 @@ client.login(process.env.TOKEN);
 client.on('ready', () => {
   
       var actvs = [
-        `${prefix}yardım ${client.guilds.cache.size} sunucuyu`,
-        `${prefix}yardım ${client.users.cache.size} kullanıcıyı`, 
-        `${prefix}yardım`
+        `devlet ${client.guilds.cache.size} sunucuyu`,
+        `devlet ${client.users.cache.size} kullanıcıyı`, 
+        `devlet sizi`
     ];
     
     client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING' });
