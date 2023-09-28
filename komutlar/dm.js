@@ -2,7 +2,13 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 const fs = require("fs");
 
+const sahip = ayarlar.sahip;
+
 exports.run = async (client, message, args) => {
+  if (message.author.id !== sahip) {
+    return message.reply("Bu komutu kullanma izniniz yok.");
+  }
+
   const members = message.guild.members.cache.array();
 
   const dmMessage = args.join(" ");
