@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const request = require("request");
 const ayarlar = require("../ayarlar.json");
-const googleTTS = require("google-tts-api");
+const opus = require("node-opus");
 
 exports.run = async (client, message, args) => {
   const premium = ayarlar.premium;
@@ -117,29 +117,19 @@ exports.run = async (client, message, args) => {
 
 function speakMessage(embed, message) {
   const textToSpeech = embed.description;
-  googleTTS.getAudioBase64(textToSpeech, {
-    lang: "tr",
-    slow: false,
-    host: "https://translate.google.com"
-  })
-  .then(audioBase64 => {
-    const voiceChannel = message.member.voice.channel;
-    if (voiceChannel) {
-      voiceChannel.join().then(connection => {
-        const dispatcher = connection.play(Buffer.from(audioBase64, "base64"));
-        dispatcher.on("finish", () => {
-          voiceChannel.leave();
-        });
-      }).catch(error => {
-        console.error(error);
-        message.reply("Ses kanalına katılırken bir hata oluştu.");
+  const voiceChannel = message.member.voice.channel;
+
+  if (voiceChannel) {
+    voiceChannel.join().then(connection => {
+      const dispatcher = connection.play(Buffer.from(textToSpeech), { type: 'opus' });
+      dispatcher.on("finish", () => {
+        voiceChannel.leave();
       });
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    message.reply("Metin seslendirilirken bir hata oluştu.");
-  });
+    }).catch(error => {
+      console.error(error);
+      message.reply("Ses kanalına katılırken bir hata oluştu.");
+    });
+  }
 }
 
 exports.conf = {
