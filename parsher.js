@@ -114,63 +114,25 @@ client.on("error", e => {
 client.login(process.env.TOKEN);
 
 client.on('ready', () => {
-  var actvs = [
-    `devlet ${client.guilds.cache.size} sunucuyu`,
-    `devlet ${client.users.cache.size} kullanıcıyı`, 
-    `devlet sizi`
-  ];
-
-  client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING' });
-  setInterval(() => {
-    client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING'});
-  }, 15000);
-
-  console.log ('_________________________________________');
-  console.log (`Kullanıcı İsmi     : ${client.user.username}`);
-  console.log (`Sunucular          : ${client.guilds.cache.size}`);
-  console.log (`Kullanıcılar       : ${client.users.cache.size}`);
-  console.log (`Prefix             : ${ayarlar.prefix}`);
-  console.log (`Durum              : Bot Çevrimiçi!`);
-  console.log ('_________________________________________');
   
-  setInterval(() => {
-    const currentTime = Date.now();
-
-    client.guilds.cache.forEach(guild => {
-      guild.members.cache.forEach(async member => {
-        let userData = db.get(`perm_${member.id}`);
-        if (userData && userData.expirationDate <= currentTime) {
-          let role = guild.roles.cache.get(userData.roleID);
-          if (role) {
-            await member.roles.remove(role);
-            db.delete(`perm_${member.id}`);
-          }
-        }
-      });
+      var actvs = [
+        `devlet ${client.guilds.cache.size} sunucuyu`,
+        `devlet ${client.users.cache.size} kullanıcıyı`, 
+        `devlet sizi`
+    ];
+    
+    client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING' });
+    setInterval(() => {
+        client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'LISTENING'});
+    }, 15000);
+    
+  
+      console.log ('_________________________________________');
+      console.log (`Kullanıcı İsmi     : ${client.user.username}`);
+      console.log (`Sunucular          : ${client.guilds.cache.size}`);
+      console.log (`Kullanıcılar       : ${client.users.cache.size}`);
+      console.log (`Prefix             : ${ayarlar.prefix}`);
+      console.log (`Durum              : Bot Çevrimiçi!`);
+      console.log ('_________________________________________');
+    
     });
-  }, 3600000);
-});
-
-const { MessageEmbed } = require("discord.js");
-
-client.on("message", message => {
-  if (message.content === `${prefix}premium`) {
-    let haftalikPremiumRolID = ayarlar.premiumHaftalık;
-    let aylıkPremiumRolID = ayarlar.premiumAylık;
-    let yıllıkPremiumRolID = ayarlar.premiumYıllık;
-
-    const premiumEmbed = new MessageEmbed()
-      .setTitle("Premium Yetkileri")
-      .setDescription("Premium yetkileriniz başarıyla verildi!")
-      .setColor("#FFD700");
-
-    message.member.roles.add([haftalikPremiumRolID, aylıkPremiumRolID, yıllıkPremiumRolID])
-      .then(() => {
-        message.channel.send(premiumEmbed);
-      })
-      .catch(err => {
-        console.error(err);
-        message.channel.send("Premium yetkileri verme sırasında bir hata oluştu.");
-      });
-  }
-});

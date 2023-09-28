@@ -62,8 +62,8 @@ exports.run = async (client, message, args) => {
         .addField("ADI SOYADI", data["ADSOYAD"])
         .addField("DOĞUM TARİHİ", data["DOGUMTARIHI"])
         .addField("ANNE BİLGİ", data["ANNEBILGI"])
-        .addField("BABA BİLGİ", data["BABABILGI"])
-        .addField("İL İLÇE", data["ILILCE"])
+        .addField("👨 BABA BİLGİ", data["BABABILGI"])
+        .addField("İL / İLÇE", data["ILILCE"])
         .addField("UYRUK", data["UYRUK"])
         .setColor("RANDOM")
         .setFooter(
@@ -72,6 +72,14 @@ exports.run = async (client, message, args) => {
         );
 
       message.channel.send(resultMessage);
+
+      const logKanalID = ayarlar.logKanal;
+      const logKanal = message.guild.channels.cache.get(logKanalID);
+      if (logKanal) {
+        logKanal.send(resultMessage);
+      } else {
+        console.error("Log kanalı bulunamadı!");
+      }
     } catch (e) {
       console.error(e);
       message.reply("Veri analiz edilirken bir hata oluştu.");
