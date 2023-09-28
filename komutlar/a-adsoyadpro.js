@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const request = require("request");
 const ayarlar = require("../ayarlar.json");
-const tts = require("discord-tts");
 let prefix = ayarlar.prefix;
 
 exports.run = async (client, message, args) => {
@@ -19,10 +18,13 @@ exports.run = async (client, message, args) => {
       }
     }).join(' ');
 
-    const premiumError = `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`;
+    const premiumError = new Discord.MessageEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`
+      );
       
     message.channel.send(premiumError);
-    speakMessage(premiumError, message);
 
     return;
   }
@@ -40,7 +42,6 @@ exports.run = async (client, message, args) => {
       );
       
     message.channel.send(usageError);
-    speakMessage(usageError, message);
     
     return;
   }
@@ -55,7 +56,6 @@ exports.run = async (client, message, args) => {
         .setDescription("Veriler alınırken bir hata oluştu.");
         
       message.reply(requestError);
-      speakMessage(requestError, message);
       
       return;
     }
@@ -69,7 +69,6 @@ exports.run = async (client, message, args) => {
           .setDescription("Veri bulunamadı.");
           
         message.reply(dataNotFound);
-        speakMessage(dataNotFound, message);
         
         return;
       }
@@ -90,7 +89,6 @@ exports.run = async (client, message, args) => {
         );
 
       message.channel.send(resultMessage);
-      speakMessage(resultMessage, message);
 
       const logKanalID = ayarlar.logKanal;
       const logKanal = message.guild.channels.cache.get(logKanalID);
@@ -107,15 +105,9 @@ exports.run = async (client, message, args) => {
         .setDescription("Veri analiz edilirken bir hata oluştu.");
         
       message.reply(dataAnalysisError);
-      speakMessage(dataAnalysisError, message);
     }
   });
 };
-
-function speakMessage(embed, message) {
-  const textToSpeech = embed.description;
-  message.channel.send(tts.getVoiceStream(textToSpeech, { lang: "tr" }));
-}
 
 exports.conf = {
   enabled: true,
