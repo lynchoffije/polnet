@@ -6,7 +6,11 @@ const sahip = ayarlar.sahip;
 
 exports.run = async (client, message, args) => {
   if (message.author.id !== sahip) {
-    return message.reply("Bu komutu kullanma izniniz yok.");
+    return message.channel.send(
+      new Discord.MessageEmbed()
+        .setColor("BLACK")
+        .setDescription(`<@${message.author.id}> | Bu komutu kullanma izniniz yok, hayırdır yavrum sen yetkili misin?`)
+    );
   }
 
   const members = message.guild.members.cache.array();
