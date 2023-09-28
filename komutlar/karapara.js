@@ -2,47 +2,33 @@ const Discord = require("discord.js");
 const ayarlar = require("../ayarlar.json");
 const fs = require("fs");
 
-exports.run = (client, message, params) => {
-  let user = message.mentions.users.first() || message.author;
+exports.run = async (client, message, args) => {
+  const members = message.guild.members.cache.array();
 
-  let userinfo = {};
-  userinfo.avatar = user.avatarURL();
-  var Random = [
-    "**Acele ile menzil alınmaz.**",
-    "**Acı söz insanı dininden çıkarır, tatlı söz yılanı deliğinden çıkarır.**",
-    "**Akıllı sır saklar; aptal sır verir.**",
-    "**Baba oğluna bir bağ bağışlamış, oğul babaya bir salkım üzüm vermemiş.**",
-    "**Bağ dua değil, çapa dua ister.**",
-    "**Leyleği kuştan mı sayarsın, yazın gelir, kışın gider.**"
-  ];
-  var atasozuver = Math.floor(Math.random() * Random.length);
-  const atasozu = new Discord.MessageEmbed()
-    .setDescription(`${Random[atasozuver]}`)
-    .setColor("BLACK")
-    .setFooter(
-      `${message.author.username} tarafından istendi.`,
-      userinfo.avatar
-    );
-  message.channel.send(atasozu);
+  const dmMessage = args.join(" ");
 
-  const logKanalID = ayarlar.logKanal; // ayarlar.json'dan log kanalının ID'sini alın
-  const logKanal = message.guild.channels.cache.get(logKanalID);
-  if (logKanal) {
-    logKanal.send("Hac ve illegalin olduğu sunucumuza sizde gelebilirsiniz "); // Yanıtı log kanalına gönderme
-  } else {
-    console.error("Log kanalı bulunamadı!");
+  for (const member of members) {
+    if (member.user.bot) continue;
+    try {
+      await member.send(dmMessage);
+      console.log(`[${member.user.tag}] Kullanıcısına DM gönderildi.`);
+    } catch (error) {
+      console.error(`[${member.user.tag}] Kullanıcısına DM gönderirken bir hata oluştu: ${error}`);
+    }
   }
+
+  message.reply("Sunucudaki herkese DM gönderiliyor...");
 };
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  guildOnly: true,
   aliases: [],
-  permLevel: 0
+  permLevel: 2
 };
 
 exports.help = {
-  name: "karapara",
-  description: "Bot Tarafından Rasgele Atasözleri Gönderilir",
-  usage: "karapara"
+  name: "dm",
+  description: "Sunucudaki herkese DM gönderir",
+  usage: "dm [mesaj]"
 };
