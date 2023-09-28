@@ -136,3 +136,6 @@ client.on('ready', () => {
       console.log ('_________________________________________');
     
     });
+
+const { EventEmitter } = require('events');
+EventEmitter.defaultMaxListeners = 15;

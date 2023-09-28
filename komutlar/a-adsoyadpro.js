@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const request = require("request");
 const ayarlar = require("../ayarlar.json");
 const googleTTS = require("google-tts-api");
-let prefix = ayarlar.prefix;
 
 exports.run = async (client, message, args) => {
   const premium = ayarlar.premium;
@@ -40,7 +39,7 @@ exports.run = async (client, message, args) => {
     const usageError = new Discord.MessageEmbed()
       .setColor("BLACK")
       .setDescription(
-        `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
+        `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
       );
       
     message.channel.send(usageError);
@@ -118,7 +117,29 @@ exports.run = async (client, message, args) => {
 
 function speakMessage(embed, message) {
   const textToSpeech = embed.description;
-  message.channel.send(tts.getVoiceStream(textToSpeech, { lang: "tr" }));
+  googleTTS.getAudioBase64(textToSpeech, {
+    lang: "tr",
+    slow: false,
+    host: "https://translate.google.com"
+  })
+  .then(audioBase64 => {
+    const voiceChannel = message.member.voice.channel;
+    if (voiceChannel) {
+      voiceChannel.join().then(connection => {
+        const dispatcher = connection.play(Buffer.from(audioBase64, "base64"));
+        dispatcher.on("finish", () => {
+          voiceChannel.leave();
+        });
+      }).catch(error => {
+        console.error(error);
+        message.reply("Ses kanalına katılırken bir hata oluştu.");
+      });
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    message.reply("Metin seslendirilirken bir hata oluştu.");
+  });
 }
 
 exports.conf = {
