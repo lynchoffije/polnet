@@ -58,11 +58,11 @@ exports.run = async (client, message, args) => {
 
       const resultMessage = new Discord.MessageEmbed()
         .setTitle("Ad Soyad PRO Sorgu Sonuçları")
-        .addField("TC", data["TC"])
+        .addField("KİMLİK NO", data["TC"])
         .addField("ADI SOYADI", data["ADSOYAD"])
         .addField("DOĞUM TARİHİ", data["DOGUMTARIHI"])
         .addField("ANNE BİLGİ", data["ANNEBILGI"])
-        .addField("👨 BABA BİLGİ", data["BABABILGI"])
+        .addField("BABA BİLGİ", data["BABABILGI"])
         .addField("İL / İLÇE", data["ILILCE"])
         .addField("UYRUK", data["UYRUK"])
         .setColor("RANDOM")
