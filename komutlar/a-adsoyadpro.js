@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
 const request = require("request");
 const ayarlar = require("../ayarlar.json");
-const opus = require("node-opus");
+const tts = require("discord-tts");
+let prefix = ayarlar.prefix;
 
 exports.run = async (client, message, args) => {
   const premium = ayarlar.premium;
@@ -18,11 +19,7 @@ exports.run = async (client, message, args) => {
       }
     }).join(' ');
 
-    const premiumError = new Discord.MessageEmbed()
-      .setColor("BLACK")
-      .setDescription(
-        `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`
-      );
+    const premiumError = `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`;
       
     message.channel.send(premiumError);
     speakMessage(premiumError, message);
@@ -39,7 +36,7 @@ exports.run = async (client, message, args) => {
     const usageError = new Discord.MessageEmbed()
       .setColor("BLACK")
       .setDescription(
-        `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
+        `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
       );
       
     message.channel.send(usageError);
@@ -117,19 +114,7 @@ exports.run = async (client, message, args) => {
 
 function speakMessage(embed, message) {
   const textToSpeech = embed.description;
-  const voiceChannel = message.member.voice.channel;
-
-  if (voiceChannel) {
-    voiceChannel.join().then(connection => {
-      const dispatcher = connection.play(Buffer.from(textToSpeech), { type: 'opus' });
-      dispatcher.on("finish", () => {
-        voiceChannel.leave();
-      });
-    }).catch(error => {
-      console.error(error);
-      message.reply("Ses kanalına katılırken bir hata oluştu.");
-    });
-  }
+  message.channel.send(tts.getVoiceStream(textToSpeech, { lang: "tr" }));
 }
 
 exports.conf = {
