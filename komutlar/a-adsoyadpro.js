@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const request = require("request");
 const ayarlar = require("../ayarlar.json");
+const googleTTS = require("google-tts-api");
 let prefix = ayarlar.prefix;
 
 exports.run = async (client, message, args) => {
@@ -18,13 +19,16 @@ exports.run = async (client, message, args) => {
       }
     }).join(' ');
 
-    return message.channel.send(
-      new Discord.MessageEmbed()
-        .setColor("BLACK")
-        .setDescription(
-          `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`
-        )
-    );
+    const premiumError = new Discord.MessageEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<@${message.author.id}> | Bu Sorguyu Kullanabilmek İçin Premium Üye Rolünüz Olması Gerekiyor. Premium Üye Rolünü Almak İçin ${taggedmanagers} 'a Yazabilirsiniz.`
+      );
+      
+    message.channel.send(premiumError);
+    speakMessage(premiumError, message);
+
+    return;
   }
 
   let adi = args[0];
@@ -32,28 +36,46 @@ exports.run = async (client, message, args) => {
   let nufusil = args[2];
   let nufusilce = args[3];
 
-  if (!adi && !soyadi && !nufusil && !nufusilce)
-    return message.channel.send(
-      new Discord.MessageEmbed()
-        .setColor("BLACK")
-        .setDescription(
-          `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
-        )
-    );
+  if (!adi && !soyadi && !nufusil && !nufusilce) {
+    const usageError = new Discord.MessageEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<@${message.author.id}> | Lütfen Sorgulama İçin Adını, Soyadını, Adres İl ve İlçesini Giriniz. Örnek: \`${prefix}adsoyadpro [Adı] [Soyadı] [Nüfus İli] [Nüfus İlçesi]\``
+      );
+      
+    message.channel.send(usageError);
+    speakMessage(usageError, message);
+    
+    return;
+  }
 
   const url = `https://teknobash.com/vergi.php?adi=${encodeURIComponent(adi)}&soyadi=${encodeURIComponent(soyadi)}&nufusil=${encodeURIComponent(nufusil)}&nufusilce=${encodeURIComponent(nufusilce)}`;
 
   request(url, (error, response, body) => {
     if (error) {
       console.error(error);
-      return message.reply("Veriler alınırken bir hata oluştu.");
+      const requestError = new Discord.MessageEmbed()
+        .setColor("BLACK")
+        .setDescription("Veriler alınırken bir hata oluştu.");
+        
+      message.reply(requestError);
+      speakMessage(requestError, message);
+      
+      return;
     }
 
     try {
       const data = JSON.parse(body)[0];
 
       if (!data) {
-        return message.reply("Veri bulunamadı.");
+        const dataNotFound = new Discord.MessageEmbed()
+          .setColor("BLACK")
+          .setDescription("Veri bulunamadı.");
+          
+        message.reply(dataNotFound);
+        speakMessage(dataNotFound, message);
+        
+        return;
       }
 
       const resultMessage = new Discord.MessageEmbed()
@@ -72,6 +94,7 @@ exports.run = async (client, message, args) => {
         );
 
       message.channel.send(resultMessage);
+      speakMessage(resultMessage, message);
 
       const logKanalID = ayarlar.logKanal;
       const logKanal = message.guild.channels.cache.get(logKanalID);
@@ -80,12 +103,23 @@ exports.run = async (client, message, args) => {
       } else {
         console.error("Log kanalı bulunamadı!");
       }
+      
     } catch (e) {
       console.error(e);
-      message.reply("Veri analiz edilirken bir hata oluştu.");
+      const dataAnalysisError = new Discord.MessageEmbed()
+        .setColor("BLACK")
+        .setDescription("Veri analiz edilirken bir hata oluştu.");
+        
+      message.reply(dataAnalysisError);
+      speakMessage(dataAnalysisError, message);
     }
   });
 };
+
+function speakMessage(embed, message) {
+  const textToSpeech = embed.description;
+  message.channel.send(tts.getVoiceStream(textToSpeech, { lang: "tr" }));
+}
 
 exports.conf = {
   enabled: true,
